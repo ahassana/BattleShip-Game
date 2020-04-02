@@ -1,6 +1,11 @@
 class Communication {
   constructor() {
-    this.socket = io.connect();
+    this.socket = io(
+      'https://admin-271910.appspot.com/', 
+      { transports: ['websocket'] }
+   );
+;
+    
     this.select = document.getElementById('playerList');
     this.answerIfHit();
     this.endGame();
