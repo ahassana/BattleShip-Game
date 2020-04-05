@@ -20,7 +20,8 @@ class Communication {
       this.socket.on('connetionBeforeGame', (ships, draw, username) => {
         if (draw) {
           cmlogic.startGame(username);
-          //audio stream
+          //audio stream/
+          /* 
           const audio = document.querySelector('audio');
           const constraints = window.constraints = {
             audio: true,
@@ -36,7 +37,8 @@ class Communication {
             window.stream = stream; // make variable available to browser console
             audio.srcObject = stream;
           }
-          navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(err=>console.log(err));
+          navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(err=>console.log(err)); 
+          */
 
           battleshipGame.drawText('Game Started Wait For It!', 'black', 100, 200);
         }
@@ -62,7 +64,7 @@ class Communication {
     this.socket.emit('startGame', username);
     battleshipGame.drawText('Game Started Attack!', 'black', 100, 200);
 
-    const audio = document.querySelector('audio');
+    /* const audio = document.querySelector('audio');
     const constraints = window.constraints = {
       audio: true,
       video: false
@@ -77,7 +79,7 @@ class Communication {
       window.stream = stream; // make variable available to browser console
       audio.srcObject = stream;
     }
-    navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(err=>console.log(err));
+    navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(err=>console.log(err)); */
   }
 
   fromServerIfHit(cell) {

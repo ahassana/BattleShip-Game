@@ -14,6 +14,12 @@ var server = require('http').Server(app);
 const io = require('socket.io')(server);
 var connect = require('./models/cm')(io);
 
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
