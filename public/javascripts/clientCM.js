@@ -1,5 +1,9 @@
+
+
 class Communication {
+  
   constructor() {
+
     this.socket = io.connect('https://admin-271910.appspot.com/', 
                   { transports: ['websocket'] });
     this.select = document.getElementById('playerList');

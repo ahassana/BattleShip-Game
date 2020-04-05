@@ -23,8 +23,23 @@ block content
           ul#playerStatus
     button(class='start-game' id="selectInput" type="button", value='Play') Start Game
   canvas(id="canvas" width="100%" height="500")
+  div(style="text-align: center;")
+    textarea(id="yourId")
+    br
+    textarea(id="otherId")
+    br
+    textarea(id="messages")
+    br
+    textarea(id="yourMessage")
+    button(id="connect") connect
+    button(id="send") send
+
+  audio(id="gum-local" controls autoplay style="display:none")
   script(src="/socket.io/socket.io.js")
   script(src="/javascripts/clientCM.js")
   script(src="/javascripts/boardDrawer.js")
   script(src="/javascripts/clientGameLogics.js")
   script(src="/javascripts/clientMCLogics.js")
+  script(src="/javascripts/simplepeer.min.js")
+  script(src="/javascripts/chat.js")
+  
