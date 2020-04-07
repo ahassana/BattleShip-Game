@@ -28,7 +28,7 @@ block content
       input(id="m" autocomplete="off")
       button Send
 
-  //-audio(id="gum-local" controls autoplay style="display:none")
+  audio(id="gum-local" controls autoplay style="display:none")
   script(src="/socket.io/socket.io.js")
   script(src="/javascripts/clientCM.js")
   script(src="/javascripts/boardDrawer.js")
@@ -38,20 +38,27 @@ block content
   script(src="/javascripts/chat.js")
   script(src="https://code.jquery.com/jquery-1.11.1.js")
   script.
-      // [START appengine_websockets_js]
-      $(function () {
+      //var audio = document.getElementById('gum-local')
+      navigator.mediaDevices.getUserMedia({video: false, audio: true}, function (stream) {
+        $(function () {
         var socket = io();
         $('form').submit(function(){
           console.log($('#m').val());
-          socket.emit('chat message', $('#m').val());
+          socket.emit('chat message', $('#m').val(),$('#gum-local').attr('src', stream));
           $('#m').val('');
           return false;
         });
         socket.on('chat message', function(msg){
           console.log(msg);
           $('#messages').append($('<li>').text(msg));
+          $('#gum-local').attr('src', stream)
           //$('#messages').value=msg;
           window.scrollTo(0, document.body.scrollHeight);
         });
       });
+      },function (err) {
+        console.log(err)
+        })
+      // [START appengine_websockets_js]
+      
   
