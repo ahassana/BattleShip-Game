@@ -28,7 +28,9 @@ block content
       input(id="m" autocomplete="off")
       button Send
 
-  audio(id="audio" controls autoplay style="display:none")
+  video(id="audio" src='' controls autoplay style="display:none")
+  img(id="play" src='' style="display:none")
+  canvas(id='canvas')
   script(src="/socket.io/socket.io.js")
   script(src="/javascripts/clientCM.js")
   script(src="/javascripts/boardDrawer.js")
@@ -38,6 +40,38 @@ block content
   script(src="/javascripts/chat.js")
   script(src="https://code.jquery.com/jquery-1.11.1.js")
   script.
+      // audio chat
+      var audio = document.getElementById('audio');
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      var socket = io();
+
+      function loadAudio(stream) {
+        audio.src = stream;
+        console.log('connected')
+      }
+      function failAudio() {
+        console.log('not connected')
+      }
+
+      function viewAudio(audio,context) {
+        context.drawImage(audio,0,0,400,400)
+        socket.emit('stream',canvas.toDataURL('image/webp'))
+      }
+
+      $(function(){
+        navigator.getUserMedia({video: true,audio: true},loadAudio,failAudio)
+      })
+
+      setInterval(function(){
+        viewAudio(audio,context)
+      },70)
+
+      socket.on('stream', audio => {
+        var img = document.getElementById('play');
+        img.src = audio
+      })
+
       // [START appengine_websockets_js]
       $(function () {
         var socket = io();

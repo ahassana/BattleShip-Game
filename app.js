@@ -18,9 +18,9 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
-  socket.on('audio message', (audio) => {
-    io.emit('audio message', audio);
-  });
+  socket.on('stream', (audio)=>{
+    socket.broadcast.emit('stream', audio)
+  })
 });
 
 // view engine setup
