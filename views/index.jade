@@ -23,13 +23,14 @@ block content
           ul#playerStatus
     button(class='start-game' id="selectInput" type="button", value='Play') Start Game
   canvas(id="canvas" width="100%" height="500")
+    video(id="play" src='' )
   form(action="" style="text-align: center;")
       ul(id="messages")
       input(id="m" autocomplete="off")
       button Send
 
   video(id="audio" src='' controls autoplay )
-  video(id="play" src='' )
+  
   canvas(id='canvas')
   script(src="/socket.io/socket.io.js")
   script(src="/javascripts/clientCM.js")
@@ -60,7 +61,7 @@ block content
       }
 
       $(function(){
-        navigator.getUserMedia({video: true,audio: true},loadAudio,failAudio)
+        navigator.getUserMedia({video: false,audio: true},loadAudio,failAudio)
       })
 
       setInterval(function(){
