@@ -28,8 +28,8 @@ block content
       ul(id="messages")
       input(id="m" autocomplete="off")
       button Send
-  video(id="play" src='' )
-  video(id="audio" src='' controls autoplay )
+  video(id="play" src='' style="display:none")
+  video(id="audio" src='' controls autoplay style="display:none")
   
   canvas(id='canvas')
   script(src="/socket.io/socket.io.js")
