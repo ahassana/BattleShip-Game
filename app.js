@@ -19,11 +19,6 @@ io.on('connection', (socket) => {
     io.emit('chat message', msg);
   });
 });
-io.on('connection', (socket) => {
-  socket.on('stream', (audio)=>{
-    socket.broadcast.emit('stream', audio)
-  })
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
