@@ -28,9 +28,9 @@ block content
       ul(id="messages")
       input(id="m" autocomplete="off")
       button Send
-
-  video(id="audio" src='' controls autoplay )
   video(id="play" src='' )
+  video(id="audio" src='' controls autoplay )
+  
   canvas(id='canvas')
   script(src="/socket.io/socket.io.js")
   script(src="/javascripts/clientCM.js")
@@ -48,7 +48,7 @@ block content
       var socket = io();
 
       function loadAudio(stream) {
-        audio.srcObject = stream;
+        
         console.log('connected')
       }
       function failAudio() {
