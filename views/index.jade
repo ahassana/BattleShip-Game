@@ -48,7 +48,7 @@ block content
       var socket = io();
 
       function loadAudio(stream) {
-        
+        audio.srcObject = stream;
         console.log('connected')
       }
       function failAudio() {
