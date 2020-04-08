@@ -29,7 +29,7 @@ block content
       button Send
 
   video(id="audio" src='' controls autoplay )
-  img(id="play" src='' )
+  video(id="play" src='' )
   canvas(id='canvas')
   script(src="/socket.io/socket.io.js")
   script(src="/javascripts/clientCM.js")
@@ -69,7 +69,7 @@ block content
 
       socket.on('stream', audio => {
         var img = document.getElementById('play');
-        img.src = audio
+        img.srcObject = audio
       })
 
       // [START appengine_websockets_js]

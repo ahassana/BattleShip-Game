@@ -18,6 +18,8 @@ io.on('connection', (socket) => {
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
+});
+io.on('connection', (socket) => {
   socket.on('stream', (audio)=>{
     socket.broadcast.emit('stream', audio)
   })
